@@ -19,7 +19,9 @@ export const createLine=(xStart: number,
     c: CanvasRenderingContext2D, marked: boolean)=>{
     c.beginPath();
     if(marked){
-        c.strokeStyle = "red"
+      
+        c.strokeStyle ="red"
+        
     }else{
         c.strokeStyle = "gray"
     }

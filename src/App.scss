@@ -1,0 +1,17 @@
+.App{
+    overflow: hidden !important;
+    position: relative;
+
+    .controlContainer{
+        position: fixed;
+        display: flex;
+        justify-content: flex-end;
+        height: 40px;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        align-items: center;
+        z-index: 4;
+
+    }
+}

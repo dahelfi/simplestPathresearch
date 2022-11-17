@@ -5,7 +5,14 @@ type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvas
 HTMLCanvasElement>
 & {draw: (context: CanvasRenderingContext2D)=>void};
 
-const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
+interface Props{
+  draw: (context: CanvasRenderingContext2D)=>void;
+  width: number;
+  height: number;
+  data: any;
+}
+
+const Canvas = (props: Props) => {
   const canvasRef = useRef<HTMLCanvasElement|null>(null)
 
   useEffect(()=>{
@@ -18,12 +25,12 @@ const Canvas: React.FC<CanvasProps> = ({draw, ...props}) => {
       return;
     }
     
-    draw(context);
+    props.draw(context);
 
     return ()=>{
       context.clearRect(0,0,window.innerWidth, 400);
     }
-  },[])
+  },[props.data])
 
 
 
