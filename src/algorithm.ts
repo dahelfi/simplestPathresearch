@@ -2,7 +2,9 @@ export const findShortestPathModified = (graph: any, startNode: any, endNode: an
     let lastNode = graph[startNode];
     let distances: any = {};
     distances[endNode] = graph[endNode];
-    distances[endNode].distance = 1000000;
+    distances[endNode].distance = "INFINITY";
+    console.log("geh rein");
+    
     
     let tempDistances: any = {}
    graph[startNode].edges.forEach((element: any)=>{
@@ -24,14 +26,16 @@ export const findShortestPathModified = (graph: any, startNode: any, endNode: an
     let node = graph[startNode].edges[0].index;
     
     //for that node
-	while (node) {
+	while (node || node === 0) {
 		// find its distance from the start node & its child nodes
 		let distance = distances[node].distance;
 		let children = graph[node].edges;
 		// for each of those child nodes
-
+        console.log("dein node ist: ", node);
+        
         for (let i = 0; i < children.length; i++) {
-    
+            console.log("dein lastnode ist: ", lastNode);
+            console.log("children.index: ", children[i].index);
             if (String(children[i].index) === String(startNode) || lastNode && children[i].index === lastNode.index) {
 				continue;
 			} else {
@@ -41,7 +45,7 @@ export const findShortestPathModified = (graph: any, startNode: any, endNode: an
 				// or if the recorded distance is shorter than the previously stored distance from the start node to the child node
 				// save the distance to the object
 				// record the path
-				if (!distances[children[i].index] || distances[children[i].index].distance > newdistance) {
+				if (!distances[children[i].index] || distances[children[i].index].distance > newdistance || distances[children[i].index].distance === "INFINITY") {
                     distances[children[i].index] = graph[children[i].index]
 					distances[children[i].index].distance = newdistance;
 					parents[children[i].index] = node;

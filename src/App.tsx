@@ -1,18 +1,27 @@
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";                                //icons
+
 import './App.scss';
 import { useState } from 'react';
 import Canvas from './Canvas';
 import { createCircle, createLine } from "./utils";
 import {findShortestPath,  shortestDistanceNode} from "./algorithmNormal";
 import {findShortestPathModified} from "./algorithm";
-import {testValues} from "./data";
 import {graph, graphmodified} from "./graph"
 import { colorShortestPath } from './algorithmExplanation';
 import {clausthalGraph} from "./claustalGraph"
+import { Dropdown } from 'primereact/dropdown';
+import { Button } from 'primereact/button';
+import { createArray } from './dropdownData';
+import {testDataCTGraph} from "./testdataCTGraph"
 
 
 
 function App() {
   const [circleArray, seCircleArray] = useState<any>(clausthalGraph);
+  const [destinationNode, setDestinationNode] = useState<any>(null);
+  const [startNode, setStartNode] = useState<any>(null);
 
   const drawExample = (context: CanvasRenderingContext2D) => {
 
@@ -31,17 +40,24 @@ function App() {
 
 function runCode1(){
 
-  
-  let temp = findShortestPathModified(graphmodified, "8", "1");
+console.log("hier deine startnode: ", startNode);
+console.log("hier deine endnode: ", destinationNode);
 
-  seCircleArray( {... colorShortestPath(graphmodified, temp.path)});
+  
+  let temp = findShortestPathModified(clausthalGraph, parseInt(startNode), parseInt(destinationNode));
+  console.log("her dein result:  ", temp);
+  
+
+  seCircleArray( {... colorShortestPath(clausthalGraph, temp.path)});
 }
 
   return (
     <div className="App">
       <div className='controlContainer'>
       <h1>Simplest Path Algorithm</h1>
-      <button onClick={runCode1}>Search</button>
+      <Button onClick={runCode1}>Show Route</Button>
+      <Dropdown value={startNode}  optionValue="code" options={createArray()} onChange={(e) => setStartNode(e.value)} optionLabel="name" placeholder="Startnode" />
+    <Dropdown optionLabel="name" optionValue="code" value={destinationNode} options={createArray()} onChange={(e) => setDestinationNode(e.value)} placeholder="Destinationnode"/>
       </div>
 
    

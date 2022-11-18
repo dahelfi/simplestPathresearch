@@ -19,15 +19,19 @@ export const createLine=(xStart: number,
     c: CanvasRenderingContext2D, marked: boolean)=>{
     c.beginPath();
     if(marked){
-      
         c.strokeStyle ="red"
+        c.moveTo(xStart,yStart);
+        c.lineTo(xDestination, yDestination);
+        c.stroke()
+        c.closePath();
         
     }else{
         c.strokeStyle = "gray"
+        c.moveTo(xStart,yStart);
+        c.lineTo(xDestination, yDestination);
+        c.stroke()
+        c.closePath();
     }
-    c.moveTo(xStart,yStart);
-    c.lineTo(xDestination, yDestination);
-    c.stroke()
-    c.closePath();
+
 
 }
