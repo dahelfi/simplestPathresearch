@@ -64,7 +64,7 @@ export const findShortestPath = (graph: any, startNode: any, endNode: any) => {
 		distance: distances[endNode],
 		path: shortestPath,
 	};
-console.log("läuft");
+
 
 	return results;
 };

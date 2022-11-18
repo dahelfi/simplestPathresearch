@@ -83,31 +83,3 @@ export const shortestDistanceNode = (distances: any, visited: any) => {
 	return shortest;
 };
 
-export const colorShortestPath=(testValues: any, path: any)=>{
-   
-	for (let i = 0; i < path.length; i++) {
-		for(let j in testValues){
-
-			if(parseInt(path[i])=== testValues[j].index){
-				for (let k = 0; k < testValues[j].edges.length; k++) {
-
-					if(path.length - 1 >= i){
-						console.log("i was here: ", path[i + 1]);
-                        if(parseInt(path[i + 1]) === testValues[j].edges[k].index){
-
-                            console.log("i was here deep: ", path[i + 1]);
-                            
-                            testValues[j].edges[k].marked = true;
-                        }
-                    }
-				}
-
-			}
-		}
-	}
-	
-    
-
-
-    return testValues;
-}

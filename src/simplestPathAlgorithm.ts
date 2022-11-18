@@ -1,9 +1,9 @@
-export const findShortestPathModified = (graph: any, startNode: any, endNode: any) => {
+export const simplestPathAlgorithm = (graph: any, startNode: any, endNode: any) => {
     let lastNode = graph[startNode];
     let distances: any = {};
     distances[endNode] = graph[endNode];
     distances[endNode].distance = "INFINITY";
-    console.log("geh rein");
+
     
     
     let tempDistances: any = {}
@@ -31,11 +31,10 @@ export const findShortestPathModified = (graph: any, startNode: any, endNode: an
 		let distance = distances[node].distance;
 		let children = graph[node].edges;
 		// for each of those child nodes
-        console.log("dein node ist: ", node);
+
         
         for (let i = 0; i < children.length; i++) {
-            console.log("dein lastnode ist: ", lastNode);
-            console.log("children.index: ", children[i].index);
+
             if (String(children[i].index) === String(startNode) || lastNode && children[i].index === lastNode.index) {
 				continue;
 			} else {

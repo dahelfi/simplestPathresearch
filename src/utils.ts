@@ -35,3 +35,47 @@ export const createLine=(xStart: number,
 
 
 }
+
+export const colorShortestPath=(realArray: any, path: any)=>{
+    let testValues = realArray;
+     for (let i = 0; i < path.length; i++) {
+         for(let j in testValues){
+ 
+             if(parseInt(path[i])=== testValues[j].index){
+                 for (let k = 0; k < testValues[j].edges.length; k++) {
+ 
+                     if(path.length - 1 >= i){
+ 
+                         if(parseInt(path[i + 1]) === testValues[j].edges[k].index){
+ 
+                          
+                             
+                             testValues[j].edges[k].marked = true;
+                         }
+                     }
+                 }
+ 
+             }
+         }
+     }
+     
+     
+ 
+ 
+     return testValues;
+ }
+
+ export const createArray = ()=>{
+    let exportArray= [];
+    for (let i = 0; i < 53; i++) {
+        let element = {
+            name: i.toString(),
+            code: i
+        }
+        exportArray.push(element);
+    
+        
+    }
+    
+    return exportArray;
+    }

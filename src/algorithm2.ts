@@ -1,4 +1,4 @@
-import { shortestDistanceNode } from "./algorithm";
+import { shortestDistanceNode } from "./simplestPathAlgorithm";
 
 export const findShortestPathWithLogs = (graph: any, startNode: any, endNode: any) => {
     // establish object for recording distances from the start node
