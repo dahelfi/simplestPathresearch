@@ -32,13 +32,18 @@ export const simplestPathAlgorithm = (graph: any, startNode: any, endNode: any) 
 		let children = graph[node].edges;
 		// for each of those child nodes
 
+       
         
         for (let i = 0; i < children.length; i++) {
 
+          
+
+            
             if (String(children[i].index) === String(startNode) || lastNode && children[i].index === lastNode.index) {
 				continue;
 			} else {
 				// save the distance from the start node to the child node
+
 				let newdistance = distance + calculateValue(lastNode.x, lastNode.y, graph[node].x, graph[node].y, children[i].x, children[i].y, children.length );
 				// if there's no recorded distance from the start node to the child node in the distances object
 				// or if the recorded distance is shorter than the previously stored distance from the start node to the child node
@@ -83,8 +88,8 @@ export const simplestPathAlgorithm = (graph: any, startNode: any, endNode: any) 
     export const shortestDistanceNode = (distances: any, visited: any) => {
         let shortest = null;
         for (let node in distances){
-            let currentIsShortest = shortest === null || distances[node].distance < distances[shortest].distance;
-            if (currentIsShortest && !visited.includes(distances[node].index)) {
+            let currentIsShortest = shortest === null || distances[node].distance < distances[shortest].distance || distances[node].distance !== "INFINITY"
+            if(currentIsShortest && !visited.includes(distances[node].index)){
                 shortest = parseInt(node, 10);
             }
         }

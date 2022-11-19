@@ -21,6 +21,7 @@ function App() {
   const [startNode, setStartNode] = useState<any>(null);
   const [visible, setVisible] = useState<boolean>(false);
   const [errormessage, setErrorMessage] = useState<string>("");
+  const [distance, setDistance] = useState<number |undefined>(undefined);
 
   const drawExample = (context: CanvasRenderingContext2D) => {
 
@@ -45,18 +46,22 @@ if(startNode === null || destinationNode === null){
   setErrorMessage("Please select both nodes");
   setVisible(true);
 }else if(startNode === destinationNode){
-  setErrorMessage("Please select different nodes");
+  setErrorMessage("Please select not the same start and destination node");
   setVisible(true);
 }else{
   let temp = simplestPathAlgorithm(test, parseInt(startNode), parseInt(destinationNode))
+  console.log("hier dein object: ", temp);
+  
   setCircleArray({... colorShortestPath(test, temp.path)});
+  setDistance(temp.distance);
 }
 }
 
   return (
     <div className="App">
       <div className='controlContainer'>
-      <h1>Simplest Path Algorithm</h1>
+      <h1 style={{marginRight: "16px"}}>Simplest Path Algorithm</h1>
+      {distance ?  <h1>Distance:{distance}</h1>: null}
       <Button style={{margin: "0px 16px 0px 16px"}} onClick={findSimplestPath}>Show Route</Button>
       <Dropdown style={{width: "200px"}} value={startNode}  optionValue="code" options={createArray()} onChange={(e) => setStartNode(e.value)} optionLabel="name" placeholder="Startnode" />
     <Dropdown style={{width: "200px"}} optionLabel="name" optionValue="code" value={destinationNode} options={createArray()} onChange={(e) => setDestinationNode(e.value)} placeholder="Destinationnode"/>
@@ -65,8 +70,6 @@ if(startNode === null || destinationNode === null){
       <Dialog header="ERROR" visible={visible} style={{width: '30vw'}}  onHide={onHide}>
       {errormessage}
       </Dialog>
- 
-
     </div>
   );
 }
