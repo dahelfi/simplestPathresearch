@@ -195,8 +195,8 @@ export let clausthalGraph: any = {
   },
   10: {
     index: 10,
-        x: 454,
-        y: 768,
+    x: 454,
+    y: 768,
     distance: 0,
     edges: [
       {
@@ -223,8 +223,8 @@ export let clausthalGraph: any = {
         y: 518,
         marked: false,
       },
-      
-    ]},
+    ],
+  },
   11: {
     index: 11,
     x: 668,
@@ -270,7 +270,6 @@ export let clausthalGraph: any = {
         y: 704,
         marked: false,
       },
-
     ],
   },
   13: {
@@ -297,7 +296,6 @@ export let clausthalGraph: any = {
         y: 578,
         marked: false,
       },
-
     ],
   },
   14: {
@@ -324,7 +322,6 @@ export let clausthalGraph: any = {
         y: 652,
         marked: false,
       },
-
     ],
   },
   15: {
@@ -364,9 +361,7 @@ export let clausthalGraph: any = {
         x: 692,
         y: 860,
         marked: false,
-      }
-
-    
+      },
     ],
   },
   17: {
@@ -450,8 +445,7 @@ export let clausthalGraph: any = {
     x: 1166,
     y: 806,
     distance: 0,
-    edges: [{ index: 21,     x: 1078,
-      y: 792, marked: false }],
+    edges: [{ index: 21, x: 1078, y: 792, marked: false }],
   },
   23: {
     index: 23,
@@ -522,13 +516,8 @@ export let clausthalGraph: any = {
     edges: [
       { index: 2, x: 1448, y: 538, marked: false },
       { index: 27, x: 1304, y: 652, marked: false },
-      {     index: 29,
-        x: 1110,
-        y: 436, marked: false },
-        {    index: 30,
-          x: 1144,
-          y: 252, marked: false },
-
+      { index: 29, x: 1110, y: 436, marked: false },
+      { index: 30, x: 1144, y: 252, marked: false },
     ],
   },
   29: {
@@ -577,8 +566,8 @@ export let clausthalGraph: any = {
         y: 518,
         marked: false,
       },
-    
-      { index: 36, x: 512, y: 306, marked: false }
+
+      { index: 36, x: 512, y: 306, marked: false },
     ],
   },
   33: {
@@ -593,7 +582,6 @@ export let clausthalGraph: any = {
         y: 434,
         marked: false,
       },
-      
     ],
   },
   34: {
@@ -620,7 +608,6 @@ export let clausthalGraph: any = {
         y: 516,
         marked: false,
       },
-      
     ],
   },
   35: {
@@ -649,8 +636,11 @@ export let clausthalGraph: any = {
         marked: false,
       },
     ],
-  },  36: {
-    index: 36, x: 512, y: 306,
+  },
+  36: {
+    index: 36,
+    x: 512,
+    y: 306,
     distance: 0,
     edges: [
       {
@@ -659,11 +649,9 @@ export let clausthalGraph: any = {
         y: 434,
         marked: false,
       },
-      {   index: 37,
-        x: 656,
-        y: 316, marked: false },
-        {index: 44, x: 536, y: 166,marked:false},
-        {index: 47, x: 188, y: 216,marked:false},
+      { index: 37, x: 656, y: 316, marked: false },
+      { index: 44, x: 536, y: 166, marked: false },
+      { index: 47, x: 188, y: 216, marked: false },
     ],
   },
   37: {
@@ -780,7 +768,6 @@ export let clausthalGraph: any = {
     y: 180,
     distance: 0,
     edges: [
-      
       {
         index: 37,
         x: 656,
@@ -797,20 +784,17 @@ export let clausthalGraph: any = {
     ],
   },
   44: {
-    index: 44, x: 536, y: 166,
+    index: 44,
+    x: 536,
+    y: 166,
     distance: 0,
     edges: [
-    
       { index: 36, x: 512, y: 306, marked: false },
-      {index: 38,
-        x: 558,
-        y: 48,
-        marked: false,
-      },
+      { index: 38, x: 558, y: 48, marked: false },
       {
         index: 45,
         x: 408,
-        y:156,
+        y: 156,
         marked: false,
       },
     ],
@@ -818,11 +802,9 @@ export let clausthalGraph: any = {
   45: {
     index: 45,
     x: 408,
-    y:156,
+    y: 156,
     distance: 0,
-    edges: [
-      { index: 44, x: 536, y: 166, marked: false },
-    ],
+    edges: [{ index: 44, x: 536, y: 166, marked: false }],
   },
   46: {
     index: 46,
@@ -847,11 +829,13 @@ export let clausthalGraph: any = {
   47: {
     index: 47,
     x: 188,
-        y: 216,
+    y: 216,
     distance: 0,
     edges: [
       {
-        index: 36, x: 512, y: 306,
+        index: 36,
+        x: 512,
+        y: 306,
         marked: false,
       },
       {
@@ -892,7 +876,6 @@ export let clausthalGraph: any = {
         y: 590,
         marked: false,
       },
-
     ],
   },
   49: {
@@ -904,7 +887,7 @@ export let clausthalGraph: any = {
       {
         index: 47,
         x: 188,
-            y: 216,
+        y: 216,
         marked: false,
       },
       {
@@ -919,19 +902,18 @@ export let clausthalGraph: any = {
         y: 442,
         marked: false,
       },
-
     ],
   },
   50: {
     index: 50,
-        x: 216,
-        y: 590,
+    x: 216,
+    y: 590,
     distance: 0,
     edges: [
       {
         index: 48,
-    x: 102,
-    y: 578,
+        x: 102,
+        y: 578,
         marked: false,
       },
       {
@@ -940,7 +922,6 @@ export let clausthalGraph: any = {
         y: 442,
         marked: false,
       },
-
     ],
   },
   51: {
@@ -963,9 +944,8 @@ export let clausthalGraph: any = {
       {
         index: 52,
         x: 256,
-        y: 336
+        y: 336,
       },
-
     ],
   },
   52: {
@@ -980,7 +960,6 @@ export let clausthalGraph: any = {
         y: 442,
         marked: false,
       },
-
     ],
   },
-}
+};

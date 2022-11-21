@@ -1,4 +1,4 @@
-export let testDataCTGraph: any = {
+export let testDataClaustalGraph: any = {
     0: {
         index: 0,
         x: 1632,

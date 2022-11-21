@@ -1,10 +1,6 @@
 
 import { useRef, useEffect } from 'react'; 
 
-type CanvasProps = React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>,
-HTMLCanvasElement>
-& {draw: (context: CanvasRenderingContext2D)=>void};
-
 interface Props{
   draw: (context: CanvasRenderingContext2D)=>void;
   width: number;
