@@ -11,8 +11,5 @@
     "main.ea7a2599.css.map": "/static/css/main.ea7a2599.css.map",
     "main.bb9cbc90.js.map": "/static/js/main.bb9cbc90.js.map"
   },
-  "entrypoints": [
-    "static/css/main.ea7a2599.css",
-    "static/js/main.bb9cbc90.js"
-  ]
+  "entrypoints": ["static/css/main.ea7a2599.css", "static/js/main.bb9cbc90.js"]
 }
