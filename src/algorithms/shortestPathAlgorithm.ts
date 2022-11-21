@@ -1,4 +1,6 @@
-export const simplestPathAlgorithm = (
+import { shortestDistanceNode } from "./helperFunctionsAlgorithms";
+
+export const shortestPathAlgorithm = (
   graph: any,
   startNode: any,
   endNode: any
@@ -41,11 +43,11 @@ export const simplestPathAlgorithm = (
       } else {
         // save the distance from the start node to the child node
 
-        let addedValue: number | undefined = calculateValue(
-          lastNode,
-          graph[node],
-          children[i],
-          children.length
+        let addedValue: number | undefined = calculateDistance(
+          lastNode.x,
+          lastNode.y,
+          graph[node].x,
+          graph[node].y
         );
 
         let newdistance = distance + addedValue;
@@ -92,87 +94,14 @@ export const simplestPathAlgorithm = (
   return results;
 };
 
-export const shortestDistanceNode = (distances: any, visited: any) => {
-  let shortest = null;
-  for (let node in distances) {
-    if (distances[node].distance === "INFINITY") {
-      continue;
-    }
-    let currentIsShortest =
-      shortest === null ||
-      distances[node].distance < distances[shortest].distance;
-    if (currentIsShortest && !visited.includes(distances[node].index)) {
-      shortest = parseInt(node, 10);
-    }
-  }
-  return shortest;
-};
-
-const calculateValue = (
-  previousNode: any,
-  actualNode: any,
-  potentialNode: any,
-  numberOfEdges: number
-) => {
-  let angle = calculateAngle(
-    previousNode.x,
-    previousNode.y,
-    actualNode.x,
-    actualNode.y,
-    potentialNode.x,
-    potentialNode.y
-  );
-  let edgeWeight: number | undefined = undefined;
-
-  if (angle <= 30 || angle >= 150) {
-    edgeWeight = 1;
-  } else if (numberOfEdges === 2 && (angle < 150 || angle > 30)) {
-    edgeWeight = 4;
-  } else if (numberOfEdges === 3 && (angle < 150 || angle > 30)) {
-    edgeWeight = 6;
-  } else if (
-    numberOfEdges === 3 ||
-    (numberOfEdges === 4 && angle > 30 && angle < 150)
-  ) {
-    if (angle <= 50) {
-      edgeWeight = 9;
-    } else if (angle > 50 && angle <= 70) {
-      edgeWeight = 8;
-    } else if (angle > 70 && angle <= 100) {
-      edgeWeight = 7;
-    } else if (100 < angle && angle <= 130) {
-      edgeWeight = 6;
-    } else if (130 < angle && angle < 150) {
-      edgeWeight = 5;
-    }
-  }
-
-  return edgeWeight;
-};
-
-const calculateAngle = (
-  previousNodeX: any,
-  previousNodeY: any,
+const calculateDistance = (
   actualNodeX: any,
   actualNodeY: any,
   potentialNodeX: any,
   potentialNodeY: any
 ) => {
-  let vector1 = {
-    x: previousNodeX - actualNodeX,
-    y: previousNodeY - actualNodeY,
-  };
-  let vector2 = {
-    x: potentialNodeX - actualNodeX,
-    y: potentialNodeY - actualNodeY,
-  };
-  let skalarResult = vector1.x * vector2.x + vector1.y * vector2.y;
-  let equa1 = vector1.x * vector1.x + vector1.y * vector1.y;
-  let equa2 = vector2.x * vector2.x + vector2.y * vector2.y;
-  let equa3 = Math.sqrt(equa1 * equa2);
-  let result = Math.acos(skalarResult / equa3) * (180 / Math.PI);
-  if (result < 0) {
-    result = result * -1;
-  }
+  let xDelta = actualNodeX - potentialNodeX;
+  let yDelta = actualNodeY - potentialNodeY;
+  let result = Math.sqrt(xDelta * xDelta + yDelta * yDelta);
   return result;
 };

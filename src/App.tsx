@@ -11,18 +11,24 @@ import {
   colorShortestPath,
   createArray,
 } from "./helperFunctions";
-import { simplestPathAlgorithm } from "./simplestPathAlgorithm";
+import { simplestPathAlgorithm } from "./algorithms/simplestPathAlgorithm";
+import { shortestPathAlgorithm } from "./algorithms/shortestPathAlgorithm";
+import { simplestCustomPathAlgorithm} from "./algorithms/customPathAlgorithm";
 import { clausthalGraph } from "./GraphDataStructure/claustalGraphDataStructure";
 import { windowTestGraph } from "./GraphDataStructure/testGraph";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
+import { SelectButton } from 'primereact/selectbutton';
 
 function App() {
   const [circleArray, setCircleArray] = useState<any>(clausthalGraph);
   const [destinationNode, setDestinationNode] = useState<any>(null);
   const [startNode, setStartNode] = useState<any>(null);
   const [visible, setVisible] = useState<boolean>(true);
+  const [simplestAlgorithm, setSimplestAlgorithm] = useState<string>("simplest");
+  const options = ['simplest', 'shortest', 'custom'];
+  let stringValue = "";
   const [message, setMessage] = useState<string>(
     "For better userexperience use a full hd resolution screen and press the F11 key for a full screen view. Retreat by repressing F11."
   );
@@ -72,6 +78,42 @@ function App() {
   };
 
   const findSimplestPath = () => {
+    let temp = simplestPathAlgorithm(
+      clausthalGraph,
+      parseInt(startNode),
+      parseInt(destinationNode)
+    );
+    console.log("hier dein object: ", temp);
+    setCircleArray({ ...colorShortestPath(clausthalGraph, temp.path) });
+    setDistance(temp.distance);
+
+  };
+
+  const findCustomSimplestPath = () => {
+    let temp = simplestCustomPathAlgorithm(
+      clausthalGraph,
+      parseInt(startNode),
+      parseInt(destinationNode)
+    );
+    console.log("hier dein object: ", temp);
+    setCircleArray({ ...colorShortestPath(clausthalGraph, temp.path) });
+    setDistance(temp.distance);
+
+  };
+
+  const findShortestPath = () => {
+    let temp = shortestPathAlgorithm(
+      clausthalGraph,
+      parseInt(startNode),
+      parseInt(destinationNode)
+    );
+    console.log("hier dein object: ", temp);
+    setCircleArray({ ...colorShortestPath(clausthalGraph, temp.path) });
+    setDistance(temp.distance);
+
+  }
+
+  const handleInput = () => {
     if (startNode === null || destinationNode === null) {
       setMessage("Please select both nodes");
       setHeaderMessage("Error");
@@ -81,28 +123,33 @@ function App() {
       setHeaderMessage("Error");
       setVisible(true);
     } else {
-      let temp = simplestPathAlgorithm(
-        clausthalGraph,
-        parseInt(startNode),
-        parseInt(destinationNode)
-      );
-      console.log("hier dein object: ", temp);
-
-      setCircleArray({ ...colorShortestPath(clausthalGraph, temp.path) });
-      setDistance(temp.distance);
+      if (simplestAlgorithm === "simplest") {
+        findSimplestPath();
+      } else if (simplestAlgorithm === "shortest") {
+        findShortestPath();
+      }else if(simplestAlgorithm === "custom"){
+        findCustomSimplestPath();
+      }
     }
-  };
+  }
+
+  if (simplestAlgorithm === options[0]) {
+    stringValue = "Simplest";
+  } else if (simplestAlgorithm === options[1]) {
+    stringValue = "Shortest";
+  } else {
+    stringValue = "Custom Simplest";
+  }
 
   return (
     <div className="App">
       <div className="controlContainer">
-        <h2 style={{ marginRight: "8px" }}>Simplest Path Algorithm</h2>
-        {distance ? (
-          <h3 style={{ color: "red" }}>Distance:{distance}</h3>
-        ) : null}
+        <h2 style={{ marginRight: "8px" }}>{stringValue} Path Algorithm</h2>
+        {distance ? <h4 style={{color: "red"}}>Distance: {distance}</h4>: null}
+        <SelectButton value={simplestAlgorithm} options={options} onChange={(e) => setSimplestAlgorithm(e.value)} />
         <Button
           style={{ margin: "0px 8px 0px 8px" }}
-          onClick={findSimplestPath}
+          onClick={handleInput}
         >
           Show Route
         </Button>
@@ -153,5 +200,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
