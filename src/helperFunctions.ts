@@ -1,3 +1,7 @@
+/**
+ * this function renders the circles on the canvas
+ */
+
 export const createCircle = (
   index: number,
   x: number,
@@ -14,6 +18,10 @@ export const createCircle = (
   c.fillStyle = "blue";
   c.fillText(index.toString(), x - 30, y - 10);
 };
+
+/**
+ * this function connects the circles with lines
+ */
 
 export const createLine = (
   xStart: number,
@@ -43,6 +51,11 @@ export const createLine = (
   }
 };
 
+/**
+ * this function prepares the datastructure that the path can be colored
+ * 
+ */
+
 export const colorShortestPath = (inputData: any, path: any) => {
   let dataObject = resetDataStructureOfOldColors(inputData);
   for (let i = 0; i < path.length; i++) {
@@ -63,6 +76,10 @@ export const colorShortestPath = (inputData: any, path: any) => {
   return dataObject;
 };
 
+/**
+ * this function reset the datastructure that a new route can be shown
+ */
+
 export const resetDataStructureOfOldColors = (dataObject: any) => {
   for (let j in dataObject) {
     for (let k = 0; k < dataObject[j].edges.length; k++) {
@@ -71,6 +88,11 @@ export const resetDataStructureOfOldColors = (dataObject: any) => {
   }
   return dataObject;
 };
+
+
+/**
+ * this function creates all values for the dropdown input 
+ */
 
 export const createArray = () => {
   let exportArray = [];

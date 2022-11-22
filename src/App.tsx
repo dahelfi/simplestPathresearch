@@ -35,6 +35,10 @@ function App() {
   const [headerMessage, setHeaderMessage] = useState<string>("Information");
   const [distance, setDistance] = useState<number | undefined>(undefined);
 
+  /**
+   * this function calculates if there already exist a red line to prevent that the grey line covers the red one
+   * @param context 
+   */
   const checkIfColorLineAlreadyExist = (
     elementIndex: number,
     edgeIndex: number
@@ -50,7 +54,11 @@ function App() {
     return returnValue;
   };
 
-  const drawExample = (context: CanvasRenderingContext2D) => {
+  /**
+   * this function renders the whole graph on the canvas
+   * @param context 
+   */
+  const drawGraph = (context: CanvasRenderingContext2D) => {
     for (let element in circleArray) {
       let content = circleArray[element];
       for (let edge in content.edges) {
@@ -73,10 +81,16 @@ function App() {
     }
   };
 
+  /**
+   * function to hide the dialog
+   */
   const onHide = () => {
     setVisible(false);
   };
 
+   /**
+   *  function to execute the simplest path finding algorithm
+   */
   const findSimplestPath = () => {
     let temp = simplestPathAlgorithm(
       clausthalGraph,
@@ -89,6 +103,9 @@ function App() {
 
   };
 
+   /**
+   *  function to execute the custom simplest path finding algorithm
+   */
   const findCustomSimplestPath = () => {
     let temp = simplestCustomPathAlgorithm(
       clausthalGraph,
@@ -101,6 +118,9 @@ function App() {
 
   };
 
+   /**
+   * function to execute the shortest path finding algorithm
+   */
   const findShortestPath = () => {
     let temp = shortestPathAlgorithm(
       clausthalGraph,
@@ -113,6 +133,9 @@ function App() {
 
   }
 
+   /**
+   * depending on the state of the toggle element this function handles which algorithm gets executed
+   */
   const handleInput = () => {
     if (startNode === null || destinationNode === null) {
       setMessage("Please select both nodes");
@@ -173,7 +196,7 @@ function App() {
         />
       </div>
       <Canvas
-        draw={drawExample}
+        draw={drawGraph}
         width={1800}
         height={1050}
         data={circleArray}

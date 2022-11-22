@@ -1,10 +1,20 @@
 import { shortestDistanceNode } from "./helperFunctionsAlgorithms";
 
+/**
+ * this function calculates the shortest path between two given 
+ * points on a given graph
+ * @param graph 
+ * @param startNode 
+ * @param endNode 
+ * @returns 
+ */
+
 export const shortestPathAlgorithm = (
   graph: any,
   startNode: any,
   endNode: any
 ) => {
+  console.log("shortestpath wird ausgeführt");
   let lastNode = graph[startNode];
   let distances: any = {};
   distances[endNode] = graph[endNode];
@@ -93,6 +103,12 @@ export const shortestPathAlgorithm = (
 
   return results;
 };
+
+/**
+ * this function finds from the distancesobject the smallest element
+
+ */
+
 
 const calculateDistance = (
   actualNodeX: any,

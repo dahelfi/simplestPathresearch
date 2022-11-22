@@ -1,16 +1,28 @@
 import { calculateAngle, shortestDistanceNode } from "./helperFunctionsAlgorithms";
 
+/**
+ * this function calculates the simplest path between two given 
+ * points on a given graph
+ * @param graph 
+ * @param startNode 
+ * @param endNode 
+ * @returns 
+ */
 export const simplestPathAlgorithm = (
   graph: any,
   startNode: any,
   endNode: any
 ) => {
   console.log("simplestpath wird ausgeführt");
+  //in this object we store the last element to be able to create a angle between two lines
   let lastNode = graph[startNode];
+
+  //Object to store all the distances
   let distances: any = {};
   distances[endNode] = graph[endNode];
   distances[endNode].distance = "INFINITY";
 
+  //Adding the childelements of the startnode
   let tempDistances: any = {};
   graph[startNode].edges.forEach((element: any) => {
     tempDistances[element.index] = graph[element.index];
@@ -19,23 +31,26 @@ export const simplestPathAlgorithm = (
 
   distances = Object.assign(distances, tempDistances);
 
+  //in this element every predecessor of every node is stored
   let parents: any = { endNode: null };
   graph[startNode].edges.forEach((element: any) => {
     parents[element.index] = startNode;
   });
 
+  //all visited nodes are stored here
   let visited: any[] = [];
 
   let node = graph[startNode].edges[0].index;
 
-  //for that node
+  //as long as we have elements that are not visited we iterate through the while loop
   while (node || node === 0) {
     // find its distance from the start node & its child nodes
     let distance = distances[node].distance;
     let children = graph[node].edges;
-    // for each of those child node
 
+    // for each of those child node
     for (let i = 0; i < children.length; i++) {
+          // make sure each child node is not the start node
       if (
         String(children[i].index) === String(startNode) ||
         (lastNode && children[i].index === lastNode.index)
@@ -43,8 +58,7 @@ export const simplestPathAlgorithm = (
         continue;
       } else {
         // save the distance from the start node to the child node
-
-        let addedValue: number | undefined = calculateValue(
+        let addedValue: number | undefined = calculateEdgeWeight(
           lastNode,
           graph[node],
           children[i],
@@ -68,7 +82,7 @@ export const simplestPathAlgorithm = (
         }
       }
     }
-    // make sure each child node is not the start node
+
 
     // move the node to the visited set
     visited.push(node);
@@ -78,6 +92,7 @@ export const simplestPathAlgorithm = (
     lastNode = graph[parents[node]];
   }
 
+  //after the distance calculation are finished we restore the way the algorithm has taken
   let shortestPath = [endNode];
   let parent = parents[endNode];
   while (parent || parent === 0) {
@@ -96,8 +111,15 @@ export const simplestPathAlgorithm = (
 };
 
 
-
-const calculateValue = (
+/**
+ * with this function we are able to calculate each edge weight
+ * @param previousNode 
+ * @param actualNode 
+ * @param potentialNode 
+ * @param numberOfEdges 
+ * @returns 
+ */
+const calculateEdgeWeight = (
   previousNode: any,
   actualNode: any,
   potentialNode: any,
