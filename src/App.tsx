@@ -15,7 +15,7 @@ import { simplestPathAlgorithm } from "./algorithms/simplestPathAlgorithm";
 import { shortestPathAlgorithm } from "./algorithms/shortestPathAlgorithm";
 import { simplestCustomPathAlgorithm} from "./algorithms/customPathAlgorithm";
 import { clausthalGraph } from "./GraphDataStructure/claustalGraphDataStructure";
-import { windowTestGraph } from "./GraphDataStructure/testGraph";
+import { windowTestGraph } from "./GraphDataStructure/windowTestGraph";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";

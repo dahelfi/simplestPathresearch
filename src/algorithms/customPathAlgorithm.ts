@@ -36,7 +36,7 @@ export const simplestCustomPathAlgorithm = (
       parents[element.index] = startNode;
     });
   
-      //all visited nodes are stored here
+    //all visited nodes are stored here
     let visited: any[] = [];
   
     let node = graph[startNode].edges[0].index;
@@ -47,8 +47,7 @@ export const simplestCustomPathAlgorithm = (
       let distance = distances[node].distance;
       let children = graph[node].edges;
 
-      // for each of those child node
-  
+      // for each of those child nodes
       for (let i = 0; i < children.length; i++) {
           // make sure each child node is not the start node
         if (
@@ -98,6 +97,7 @@ export const simplestCustomPathAlgorithm = (
       shortestPath.push(parent);
       parent = parents[parent];
     }
+  //reverse the order of the array to have the right route from the startnode
     shortestPath.reverse();
   
     // return the shortest path from start node to end node & its distance
@@ -111,13 +111,7 @@ export const simplestCustomPathAlgorithm = (
   
   /**
  * with this function we are able to calculate each edge weight
- * @param previousNode 
- * @param actualNode 
- * @param potentialNode 
- * @param numberOfEdges 
- * @returns 
  */
-
   const calculateEdgeWeight = (
     previousNode: any,
     actualNode: any,

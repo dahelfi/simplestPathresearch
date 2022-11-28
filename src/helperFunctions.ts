@@ -1,7 +1,6 @@
 /**
  * this function renders the circles on the canvas
  */
-
 export const createCircle = (
   index: number,
   x: number,
@@ -20,9 +19,8 @@ export const createCircle = (
 };
 
 /**
- * this function connects the circles with lines
+ * this function renders the lines between the circles
  */
-
 export const createLine = (
   xStart: number,
   yStart: number,
@@ -53,9 +51,7 @@ export const createLine = (
 
 /**
  * this function prepares the datastructure that the path can be colored
- * 
  */
-
 export const colorShortestPath = (inputData: any, path: any) => {
   let dataObject = resetDataStructureOfOldColors(inputData);
   for (let i = 0; i < path.length; i++) {

@@ -1,5 +1,6 @@
 /**
- * this function finds from the distancesobject the element with the smallest distancevalue
+ * this function finds from the distancesobject the element with the smallest distancevalue 
+ * thats not in the visited array
  */
 
 export const shortestDistanceNode = (distances: any, visited: any) => {
@@ -19,9 +20,8 @@ export const shortestDistanceNode = (distances: any, visited: any) => {
   };
 
   /**
- * this function calculates the angle between three points
+ * this function calculates the angle between three points with the help of the tangens 
  */
-
   export const calculateAngle = (
     previousNodeX: any,
     previousNodeY: any,

@@ -99,6 +99,7 @@ export const simplestPathAlgorithm = (
     shortestPath.push(parent);
     parent = parents[parent];
   }
+    //reverse the order of the array to have the right route from the startnode
   shortestPath.reverse();
 
   // return the shortest path from start node to end node & its distance
@@ -113,11 +114,6 @@ export const simplestPathAlgorithm = (
 
 /**
  * with this function we are able to calculate each edge weight
- * @param previousNode 
- * @param actualNode 
- * @param potentialNode 
- * @param numberOfEdges 
- * @returns 
  */
 const calculateEdgeWeight = (
   previousNode: any,
